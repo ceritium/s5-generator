@@ -1,0 +1,6 @@
+= content_for :title do
+  Publish Slideshow
+  
+%h2 Publish Slideshow
+- form_for @slideshow, :html => { :multipart => true } do |f|  
+  = render :partial => 'form', :locals => {:f => f}

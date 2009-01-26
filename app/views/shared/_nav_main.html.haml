@@ -1,0 +1,4 @@
+%ul
+  = nav_main('Home', root_path, {:controller => 'main', :action => 'welcome'})
+  = nav_main('Explore', explore_path, {:controller => 'main', :action => 'explore' })
+  = nav_main('My Space', user_path(current_user), {:controller => 'users', :action => 'show'}) if logged_in?

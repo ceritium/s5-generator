@@ -1,0 +1,8 @@
+- if logged_in?
+  = link_to 'Publish', new_slideshow_path
+  |
+  = link_to 'Logout', logout_path
+- else
+  = link_to 'Signup', signup_path
+  |
+  = link_to 'Login', login_path

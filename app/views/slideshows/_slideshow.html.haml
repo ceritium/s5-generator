@@ -1,0 +1,6 @@
+.c25l
+  = link_to screenshot(slideshow.title, '100'), slideshow_path(slideshow)
+  %p
+    %strong= link_to slideshow.title, slideshow_path(slideshow)
+    %br
+    = "from: #{link_to slideshow.user.login, user_path(slideshow.user)} #{distance_of_time_in_words_to_now(slideshow.created_at)} ago #{slideshow.views} views"

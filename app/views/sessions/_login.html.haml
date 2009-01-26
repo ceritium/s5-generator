@@ -1,0 +1,20 @@
+- unless logged_in?
+  .subcolumns
+    - form_tag session_path do
+      .c66l
+        .subcl
+          .c25l= label_tag 'login'
+          .c75r= text_field_tag 'login', @login
+        .subcl
+          .c25l= label_tag 'password'
+          .c75r= password_field_tag 'password', nil
+        .subcl
+          .c75r
+            = label_tag 'remember_me', 'Remember me'
+            = check_box_tag 'remember_me', '1', @remember_me
+            = submit_tag 'Log in'
+      
+       
+      .c32r
+        .subcr
+          %h3= link_to 'Signup', signup_path

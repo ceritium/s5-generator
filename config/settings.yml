@@ -1,0 +1,15 @@
+development: &non_production_settings
+  <<: *login
+  site_url: http://localhost:3000
+  
+test:
+  <<: *non_production_settings
+  
+production:
+  <<: *login
+  site_url: http://s5.zapto.org
+  
+  
+login: &login
+  site_name: S5 Generator
+  admin_email: ceritium@gmail.com

@@ -1,0 +1,61 @@
+!!!
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      S5 - 
+      = yield(:title) || "A Simple Standards-Based Slide Show System"
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
+    = stylesheet_link_tag 'little_big.css', 'general.css'
+    = javascript_include_tag :defaults
+
+    /
+      [if lte IE 7]>
+      <link href="stylesheets/patches/patch_welcome.css" rel="stylesheet" type="text/css" />
+      <![endif]
+  %body
+    #page_margins
+      #border-top
+        #edge-tl
+        #edge-tr
+      #page
+        #header
+          #topnav
+            = render :partial => 'shared/topnav'
+          %h1
+            S5 Generator
+        #nav
+          /
+            skiplink anchor: navigation
+          %a#navigation{ :name => "navigation" }
+          #nav_main
+            = render :partial => 'shared/nav_main'
+        #teaser
+          .subcolumns
+            .c75l
+              .subcl
+                = yield :teaser
+            .c25r
+              .subcr
+                Search:
+        #main
+          #col1
+            #col1_content.clearfix
+              = flash_messages         
+              
+              = yield
+          #col3
+            #col3_content.clearfix
+              = yield :sidebar            
+            /
+              IE Column Clearing
+            #ie_clearing
+               
+        /
+          begin: #footer
+        #footer
+          Layout based on
+          %a{ :href => "http://www.yaml.de/" }
+            YAML
+      #border-bottom
+        #edge-bl
+        #edge-br

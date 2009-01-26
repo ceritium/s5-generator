@@ -1,0 +1,40 @@
+#form_new_slideshow
+  %p
+    = f.label :title, 'Title'
+    %br
+    = f.text_field :title
+  %p
+    = f.label :category  
+    %br
+    = f.select :category_id, Category.all.collect{|t| [t.name, t.id]}
+  %p
+    = f.label :foot1
+    %br
+    = f.text_field :foot1
+  %p
+    = f.label :foot2
+    %br
+    = f.text_field :foot2
+  %p
+    = f.label :author
+    %br
+    = f.text_field :author
+  %p
+    = f.label :presdate
+    %br
+    = f.text_field :presdate
+  %p
+    = f.label :company
+    %br
+    = f.text_field :company
+
+#markdown_new_slideshow
+  %p
+    %b Presentación:
+    = f.markdown_editor :content_code
+  %p
+    = link_to_function 'Handout >>', 'Element.toggle("handout_code")'
+    %div{:id => 'handout_code', :style => 'display:none'}
+      = f.markdown_editor :handout_code
+  %p
+    = f.submit 'Save'

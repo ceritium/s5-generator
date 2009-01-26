@@ -1,0 +1,20 @@
+- content_for :title do
+  = @category.name
+- content_for :sidebar do
+  %ul
+    - for category in @categories
+      = category_link(category, @category)
+      
+
+= embed(@slideshows.first,'90%','260' )
+
+
+
+
+
+#slideshows
+  %h2= @category.name
+  - @slideshows.in_groups_of(4, false) do |slideshows|
+    .subcolumns
+      = render :partial => 'slideshows/slideshow', :collection => slideshows
+  #paginate= will_paginate @slideshows

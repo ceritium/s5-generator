@@ -1,0 +1,47 @@
+= content_for :title do
+  = @slideshow.title
+
+= content_for :sidebar do
+  - if logged_in? && @slideshow.user == current_user
+    %b= link_to 'Seguir editando', edit_slideshow_path(@slideshow)
+  #data
+    %h2= @slideshow.title
+    = "from: #{link_to @slideshow.user.login, user_path(@slideshow.user)}, #{distance_of_time_in_words_to_now(@slideshow.created_at)} ago"
+    with
+    = "#{@slideshow.views} views and #{@slideshow.comments_count} comments"
+    %br
+    %b= link_to 'Play Slideshow', play_slideshow_path(@slideshow), :target => '_blank'    
+    %hr
+  #description
+    #short_description
+      = truncate(@slideshow.description, 120)
+      - if !@slideshow.description.nil? && @slideshow.description.length > 120
+        (
+        = link_to_function 'View all' do |page|
+          - page.hide('short_description')
+          - page.show('all_description')
+        
+        )
+    %div{:id =>'all_description', :style => 'display: none'}
+      = @slideshow.description
+      (
+      = link_to_function 'View less' do |page|
+        - page.show('short_description')
+        - page.hide('all_description')
+        
+      )
+  #embed
+    %b Embed:
+    = text_field_tag(:embed, "<iframe height='320' width='450' src='#{APP_CONFIG[:site_url]}#{play_slideshow_path(@slideshow)}/'>", {:onclick => 'focus();select();'})
+
+  #similars
+    %h3 Others Slideshows
+    = render :partial => 'hslideshow', :collection => @slideshows, :as => :slideshow
+
+= embed(@slideshow, '100%', '340')
+#comments
+  %h3= "Comments (#{@slideshow.comments_count})"
+  = render :partial => 'comments/comment', :collection => @comments
+  = render :partial => 'comments/form'
+  
+  .digg_pagination= will_paginate @comments

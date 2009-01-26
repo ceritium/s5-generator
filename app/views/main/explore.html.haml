@@ -1,0 +1,21 @@
+- content_for :title do
+  Explore
+- content_for :sidebar do
+  %h3 Explore by popularity
+  %b Most viewed:
+  %ul
+    - TIME.each do |name, key|
+      %li= link_to  name, "/popular/#{key}"
+      
+.subcolumns
+
+  %h3 Explore by categories
+
+  - @slideshows.in_groups_of(4, false) do |slideshows|
+    .subcolumns
+      - for slideshow in slideshows
+        .c25l
+          %strong= link_to slideshow.category.name, category_path(slideshow.category)
+          %br
+          = link_to screenshot(slideshow.title, '100'), category_path(slideshow.category)
+          

@@ -1,0 +1,17 @@
+.subcolumns
+  .avatar
+    .subcl
+      = avatar(comment.user.email)
+  .c75c
+    .subc
+      %p
+        %strong= link_to comment.user.login, user_path(comment.user)
+        %b say:
+        = comment.body
+        %br
+        %em= "#{distance_of_time_in_words_to_now(@slideshow.created_at)} ago"
+        
+
+
+
+

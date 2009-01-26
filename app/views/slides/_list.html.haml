@@ -1,0 +1,15 @@
+#list
+  %ul{:id => 'slides'}
+    = link_to 'Presentation', edit_slideshow_path(@slideshow)
+    - for slide in @slides
+     
+      %li.slide{:id => "item_#{slide.id}"}
+        .actions
+          = link_to '[E]', edit_slideshow_slide_path(@slideshow, slide)
+          = link_to '[B]', slideshow_slide_path(@slideshow, slide), :method => :delete, :confirm => '¿Seguro?'
+        .title
+          %b= truncate(slide.title, :length => 30)
+
+        %br
+    = sortable_element 'slides', :complete => visual_effect(:highlight, 'slides'), :url => order_slideshow_slides_path(@slideshow), :method => :put 
+

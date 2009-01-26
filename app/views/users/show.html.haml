@@ -1,0 +1,15 @@
+= content_for :title do
+  = "#{@user.login} space"
+
+= content_for :sidebar do
+  = avatar(@user.email,'100')
+  %p
+    %b= "#{@user.login} space"
+  
+  
+%h3 SlideShows:
+
+- @slideshows.in_groups_of(4, false) do |slideshows|
+  .subcolumns
+    = render :partial => 'slideshows/slideshow', :collection => slideshows
+#paginate= will_paginate @slideshows

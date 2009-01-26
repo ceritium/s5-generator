@@ -1,0 +1,138 @@
+/* 
+Based on pretty.css
+
+Color scheme by:
+http://www.colourlovers.com/index.cfm?section=palettes&view=display&palette=4604
+
+*/
+
+body {color: #574741; font-size: 2em;}
+:link, :visited {text-decoration: underline; color: #00C;}
+#controls :active {color: #88A !important;}
+#controls :focus {outline: 1px dotted #227;}
+h1, h2, h3, h4 {font-size: 100%; margin: 0; padding: 0; font-weight: inherit;}
+ul, pre {margin: 0; line-height: 1em;}
+html, body {margin: 0; padding: 0;}
+
+blockquote, q {font-style: italic;}
+blockquote {padding: 0 2em 0.5em; margin: 0 1.5em 0.5em; text-align: center; font-size: 1em;}
+blockquote p {margin: 0;}
+blockquote i {font-style: normal;}
+blockquote b {display: block; margin-top: 0.5em; font-weight: normal; font-size: smaller; font-style: normal;}
+blockquote b i {font-style: italic;}
+
+kbd {font-weight: bold; font-size: 1em;}
+sup {font-size: smaller; line-height: 1px;}
+
+.slide code {padding: 2px 0.25em; }
+.slide code.bad, code del {color: red;}
+.slide code.old {color: silver;}
+.slide code strong {font-weight: bold; }
+
+
+.slide pre {padding: 0; margin: 0.25em 0 0.5em 0.5em; color: #533; font-size: 90%;}
+.slide pre code {display: block;}
+.slide ul {margin-left: 5%; margin-right: 7%; list-style: disc;}
+.slide li {margin-top: 0.75em; margin-right: 0;}
+.slide ul ul {line-height: 1;}
+.slide ul ul li {margin: .2em; font-size: 85%; list-style: square;}
+.slide img.leader {display: block; margin: 0 auto;}
+
+div#header {
+	border-top: 0.3em solid #DE6C27;
+}
+
+
+ div#footer {
+  font-family: Helvetica, sans-serif;
+  background: #DDDDDD;
+  height: 2em !important;
+  }
+
+div#footer {font-size: 0.5em; font-weight: bold; padding: 1em 0;}
+#footer h1, #footer h2 {display: block; padding: 0 1em;}
+#footer h2 {font-style: italic;}
+
+div.long {font-size: 0.75em;}
+
+.slide h1,
+.slide h2,
+.slide h3,
+.slide h4 {
+	font-family: Helvetica, sans-serif; 
+}
+
+.slide h1 {
+	position: absolute; top: 0.7em; left: 87px; z-index: 1;
+  margin: 0; padding: 0.3em 0 0 50px; white-space: nowrap;
+  font: bold 150%/1em Helvetica, sans-serif; text-transform: capitalize;
+  color: #574741; }
+.slide h3 {font-size: 130%;}
+h1 abbr {font-variant: small-caps;}
+
+div#controls {
+	position: absolute; 
+	left: 75%; 
+	bottom: 0;
+	width: 25%;
+	text-align: right; 
+	font: bold 0.9em Verdana, Helvetica, sans-serif;}
+html>body div#controls {position: fixed; padding: 0 0 1em 0;
+  top: auto;
+  }
+div#controls form {position: absolute; bottom: 0; right: 0; width: 100%;
+  margin: 0; padding: 0;}
+
+#controls #navLinks a {
+  display: none;
+  }
+#controls #navList {height: 1em;}
+#controls #navList #jumplist {position: absolute; bottom: 0; right: 0; background: #DDD; color: #227;}
+
+#currentSlide {
+	left: 90% !important;
+	width: 10% !important;
+	bottom: 2em !important;
+	text-align: right;
+	font-size: 0.5em; 
+	color: #574741;
+	font-family: sans-serif, Helvetica;
+}
+
+#slide0 {padding-top: 3.5em; font-size: 90%;}
+#slide0 h1 {
+	position: static; margin: 1em 0 0; padding: 0;
+   font: bold 2em Helvetica, sans-serif; white-space: normal;
+   background: transparent;}
+   
+
+#slide0 h2 {font: bold italic 1em Helvetica, sans-serif; margin: 0.25em;}
+#slide0 h3 {margin-top: 1.5em; font-size: 1em;}
+#slide0 h4 {margin-top: 0; font-size: 0.75em;}
+
+ul.urls {list-style: none; display: inline; margin: 0;}
+.urls li {display: inline; margin: 0;}
+.note {display: none;}
+.external {border-bottom: 1px dotted gray;}
+html>body .external {border-bottom: none;}
+.external:after {content: " \274F"; font-size: smaller; color: #77B;}
+
+.incremental, .incremental *, .incremental *:after {color: #DDE; visibility: visible;}
+img.incremental {visibility: hidden;}
+.slide .current {color: #FDB812;}
+
+
+/* diagnostics
+
+li:after {content: " [" attr(class) "]"; color: #F88;}
+ */
+ 
+ div.section h1{
+ position: absolute; 
+ top: 4em; 
+ z-index: 1;
+ margin: 0; 
+ padding: 0; 
+ text-align: center;
+ font: bold 200%/1em Helvetica, sans-serif; text-transform: capitalize;
+ }

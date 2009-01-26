@@ -1,0 +1,22 @@
+- if params[:time] == 'all-time'
+  - title = "All Time Most Viewed Slideshows"
+- else
+  - title = "#{ORDER[params[:order].gsub('-','_').to_sym].last} slideshows #{params[:time].gsub('-', ' ')}".titleize
+    
+= content_for :title do
+  = title
+  
+
+.subcolumns
+  .c50l
+    %h2= title
+  .c50r
+    |
+    - TIME.each do |name, key|
+      = link_to_unless(current_page?(:time => key),  name, "/#{params[:order]}/#{key}")
+      |
+
+- @slideshows.in_groups_of(4, false) do |slideshows|
+  .subcolumns
+    = render :partial => 'slideshow', :collection => @slideshows
+#paginate= will_paginate @slideshows

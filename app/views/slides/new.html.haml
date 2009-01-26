@@ -1,0 +1,12 @@
+= content_for :title do
+  = @title_page
+
+= content_for :sidebar do
+  = render :partial => 'list'
+  
+- form_for :slide, :url => slideshow_slides_path(@slideshow) do |f|
+  %h2 Title:
+  = f.text_field :title
+  = render :partial => 'form', :locals => {:f => f}
+
+  = f.submit 'Create'

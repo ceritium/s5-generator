@@ -1,0 +1,16 @@
+.subcolumns
+  .preview
+    .subcl
+      = screenshot(slideshow.title)
+  .c75c
+    .subcr
+      %p
+        %strong= link_to slideshow.title, slideshow_path(hslideshow)
+        %br
+        from:
+        = link_to slideshow.user.login, user_path(slideshow.user)
+        = distance_of_time_in_words_to_now(slideshow.created_at)
+        ago
+        %br
+        = slideshow.views
+        views

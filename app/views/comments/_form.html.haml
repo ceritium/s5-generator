@@ -1,0 +1,11 @@
+- if logged_in?
+  - form_for @comment, comments_path do |f|
+    %b Deja tu comentario:
+    %p
+      = f.text_area :body, :rows => 5, :cols => 35
+      = f.hidden_field :slideshow_id, {:value => @slideshow.id}
+    %p
+      = f.submit 'Opinar'
+- else
+  Para dejar tu opinión debes estár
+  = link_to 'identificado', login_path

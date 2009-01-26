@@ -1,0 +1,15 @@
+- content_for :sidebar do 
+   
+  %h3 Slides >>
+  = render :partial => 'slides/list'
+  = link_to "Añadir Slide", new_slideshow_slide_path(@slideshow)
+  
+  
+%h2= in_place_editor_field @slideshow, :title   
+
+= in_place_editor_select @slideshow, :status, %w[drafted published]    
+= embed(@slideshow, '100%', '340')
+%h3= link_to_function 'Editar datos>>', 'Element.toggle("data_form")'
+#data_form{:style => 'display:none'}
+  - form_for @slideshow, :html => { :multipart => true } do |f|  
+    = render :partial => 'form', :locals => {:f => f}

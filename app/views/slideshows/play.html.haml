@@ -1,0 +1,17 @@
+.slide
+  %h1= @slideshow.title
+  %p
+    = @slideshow.author
+    %br
+    = @slideshow.company
+    %br
+    = screenshot(@slideshow.title)
+
+- for slide in @slideshow.slides
+  .slide
+    %h1
+      = slide.title
+    .slidecontent= slide.content_html
+    .handout= slide.handout_html
+    
+.handout= @slideshow.handout_html

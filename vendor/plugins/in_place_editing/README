@@ -1,0 +1,18 @@
+InPlaceEditing
+==============
+
+Example:
+
+  # Controller
+  class BlogController < ApplicationController
+    in_place_edit_for :post, :title
+  end
+
+  # View
+  <%= in_place_editor_field :post, 'title' %>
+  or
+  <%= in_place_editor_field @post, 'title' %>
+  or
+  <%= in_place_editor_field @post, 'title', {}, :text_if_blank => 'click here to edit' %>
+
+Copyright (c) 2007 David Heinemeier Hansson, released under the MIT license

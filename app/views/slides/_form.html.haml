@@ -1,0 +1,8 @@
+%p
+  #content_code= f.markdown_editor :content_code
+	
+%p
+  %b
+    = link_to_function 'Handout >>', 'Element.toggle("handout_code")'
+  %div{:id => 'handout_code', :style => 'display:none'}
+    = f.markdown_editor :handout_code

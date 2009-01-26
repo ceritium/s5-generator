@@ -1,0 +1,6 @@
+= content_for :title do
+  Categories
+  
+%ul
+  - for category in @categories
+    %li= link_to category.name, category_path(category)

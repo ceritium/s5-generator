@@ -1,0 +1,12 @@
+.project
+.loadpath
+.DS_Store
+config/database.yml
+log/*
+log/development.log
+tmp/*
+db/*.sqlite3
+db/schema.rb
+*.swp
+*.swo
+public/system/*

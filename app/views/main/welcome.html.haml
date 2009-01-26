@@ -1,0 +1,35 @@
+- content_for :teaser do
+  = render :partial => 'shared/teaser/sortby'
+  
+- content_for :sidebar do
+  = render :partial => 'sessions/login'
+  #presentation_of_day
+    %h3 Presentation of day
+    = embed(@slideshow, '100%', '235')
+    %p
+      %b=link_to @slideshow.title, slideshow_path(@slideshow)
+      from
+      = @slideshow.user.login
+  
+
+.subcolumns
+  .c25l
+    .subcl
+      %h2
+        Categories
+  .c75r
+    .subcr
+      .subcolumns
+        - @categories.in_groups_of(5) do |categories|  
+          .c33l
+            .subcl
+              %ul
+                - for category in categories
+                  %li= link_to category.name, category_path(category.slug)
+        #view_all= link_to  'View all', categories_path
+
+%h2
+  Features
+  
+= render :partial => 'slideshows/hslideshow', :collection => @slideshows, :as => :slideshow
+          

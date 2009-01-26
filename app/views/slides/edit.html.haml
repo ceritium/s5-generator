@@ -1,0 +1,15 @@
+= content_for :title do
+  = @slide.title
+
+= content_for :sidebar do
+  %h2 Slides:
+  = render :partial => 'list'
+  
+- form_for @slide, :url => slideshow_slide_path(@slideshow, @slide), :html => {:method => :put} do |f|
+  %h2
+    = in_place_editor_field @slide, 'title', {}, :text_if_blank => 'click here to edit'
+  %b 
+    = in_place_editor_select @slide, :status, %w[drafted published]
+    
+  = render :partial => 'form', :locals => {:f => f}
+  = f.submit 'Update'
