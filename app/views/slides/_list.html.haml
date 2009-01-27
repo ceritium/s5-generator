@@ -13,3 +13,5 @@
         %br
     = sortable_element 'slides', :complete => visual_effect(:highlight, 'slides'), :url => order_slideshow_slides_path(@slideshow), :method => :put 
 
+= link_to 'Añadir Slide', new_slideshow_slide_path(@slideshow)
+%h3= link_to 'Play', play_slideshow_path(@slideshow)

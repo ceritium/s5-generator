@@ -2,7 +2,6 @@
    
   %h3 Slides >>
   = render :partial => 'slides/list'
-  = link_to "Añadir Slide", new_slideshow_slide_path(@slideshow)
   
   
 %h2= in_place_editor_field @slideshow, :title   
