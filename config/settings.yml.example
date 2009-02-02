@@ -1,0 +1,18 @@
+development: &non_production_settings
+  <<: *common
+  site_url: http://localhost:3000
+  
+test:
+  <<: *non_production_settings
+  
+production:
+  <<: *common
+  site_url: http://example.com
+  
+  
+common: &common
+  site_name: S5 Generator
+  admin_email: admin@example.com
+  # http://webthumb.bluga.net/home
+  easythumb_key: key
+  easythumb_id: id
