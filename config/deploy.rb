@@ -33,7 +33,7 @@ role :db, domain, :primary => true
 set :scm, :git
 set :branch, "master"
 set :scm_user, 'git'
-set :repository,  "ceritium@ceritium.no-ip.org:/var/git/s5.git"
+set :repository,  'git://github.com/ceritium/s5-generator.git '
 set :deploy_via, :remote_cache
 
 #############################################################
