@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     @slideshows = @user.slideshows.paginate(:page =>params[:page], :include => :user)
     render :layout => 'little_big'
   end
+  
+  def edit
+    
+  end
 
 
   # render new.rhtml

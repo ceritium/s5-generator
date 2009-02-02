@@ -1,15 +1,17 @@
 development: &non_production_settings
-  <<: *login
+  <<: *common
   site_url: http://localhost:3000
   
 test:
   <<: *non_production_settings
   
 production:
-  <<: *login
+  <<: *common
   site_url: http://s5.zapto.org
   
   
-login: &login
+common: &common
   site_name: S5 Generator
   admin_email: ceritium@gmail.com
+  easythumb_key: ba67188b0bb8756435e81118252832e8
+  easythumb_id: 4132

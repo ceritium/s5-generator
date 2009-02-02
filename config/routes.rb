@@ -58,4 +58,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/:order/:time', :controller => 'slideshows', :action => 'index', :defaults => { :time => 'today' }, :requirements => { :order => /popular|most-commented/, :time => /today|this-week|this-month|all-time/ }
 
   map.user '/:id', :controller => 'users', :action => 'show'
+  map.user_edit '/:id/edit', :controller => 'users', :action => 'edit'
 end

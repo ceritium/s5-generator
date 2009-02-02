@@ -1,0 +1,12 @@
+= content_for :title do
+  Edita tus datos
+  
+  
+%h3 Edita tus datos:
+
+
+- form_for @user, user_path(@user), :method => :put do |f|
+    %p
+      = f.label :avatar
+      %br
+      = f.text_field :title

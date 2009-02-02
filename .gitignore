@@ -2,6 +2,7 @@
 .loadpath
 .DS_Store
 config/database.yml
+config/settings.yml
 log/*
 log/development.log
 tmp/*

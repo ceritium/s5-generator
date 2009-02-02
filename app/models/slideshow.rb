@@ -1,5 +1,8 @@
-require 'rubygems'
 require 'maruku'
+require 'tzinfo'
+require 'rwebthumb'
+
+include Simplificator::Webthumb
 class Slideshow < ActiveRecord::Base
   include AASM
 
@@ -36,7 +39,11 @@ class Slideshow < ActiveRecord::Base
   named_scope :last_published, :order => 'created_at desc', :include => :user, :conditions => {:status => 'published'}
 
 
-
+  
+  def thumb
+    et = Easythumb.new('ba67188b0bb8756435e81118252832e8','4132')
+    et.build_url(:url => "#{APP_CONFIG[:site_url]}/slideshows/#{slug}", :size => :medium, :cache => 1)
+  end
 
   def code_to_html
     self.handout_html = Maruku.new(self.handout_code).to_html
