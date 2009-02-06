@@ -3,7 +3,7 @@ class MainController < ApplicationController
   
   def welcome
     @categories = Category.most_popular
-    @slideshows = Slideshow.last_published.find(:all, :limit => 10)
+    @slideshows = Slideshow.published.find(:all, :limit => 10)
     @slideshow = Slideshow.find(:last, :include => :user)
     render :layout => 'two_columns'
   end

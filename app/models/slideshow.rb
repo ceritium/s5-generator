@@ -36,8 +36,8 @@ class Slideshow < ActiveRecord::Base
   validates_presence_of :category_id, :message => 'Debes pertenecer a una categoría'
   
   
-  named_scope :last_published, :order => 'created_at desc', :include => :user, :conditions => {:status => 'published'}
-
+  named_scope :published, :order => 'created_at desc', :include => :user, :conditions => {:status => 'published'}
+  named_scope :drafted, :order => 'updated_at desc', :include => :user, :conditions => {:status => 'drafted'}
 
   
   def thumb

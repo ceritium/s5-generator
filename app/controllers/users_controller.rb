@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :show, :edit]
   def show
-    @slideshows = @user.slideshows.paginate(:page =>params[:page], :include => :user)
+    @published_slideshows = @user.slideshows.published.find(:all, :limit => 8)
+    
+    if current_user == @user
+      @drafted_slideshows = @user.slideshows.drafted.find(:all, :limit => 8)
+    end  
+    
     render :layout => 'little_big'
   end
   
