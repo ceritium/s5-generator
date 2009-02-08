@@ -6,15 +6,19 @@ class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :show, :edit]
+  
   def show
-    @published_slideshows = @user.slideshows.published.find(:all, :limit => 8)
+    @published_slideshows = @user.slideshows.published.find(:all, :limit => 9)
     
     if current_user == @user
-      @drafted_slideshows = @user.slideshows.drafted.find(:all, :limit => 8)
+      @drafted_slideshows = @user.slideshows.drafted.find(:all, :limit => 9)
     end  
     
     render :layout => 'little_big'
   end
+  
+  
+
   
   def edit
     

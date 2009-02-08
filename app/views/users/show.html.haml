@@ -12,7 +12,7 @@
 - @published_slideshows[0..7].in_groups_of(4, false) do |slideshows|
   .subcolumns
     = render :partial => 'slideshows/slideshow', :collection => slideshows
-.view_all= link_to 'View all' if @published_slideshows.length == 9
+.view_all= link_to 'View all', user_slideshows_path(@user) if @published_slideshows.length == 9
 
 
 - if current_user == @user

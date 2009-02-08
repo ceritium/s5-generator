@@ -1,6 +1,4 @@
-%h2 
-  Publisheds by 
-  = @user.login
+%h2 Drafteds
 - @slideshows.in_groups_of(4, false) do |slideshows|
   .subcolumns
     = render :partial => 'slideshow', :collection => slideshows

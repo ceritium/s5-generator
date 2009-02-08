@@ -2,22 +2,30 @@ class SlideshowsController < ApplicationController
   
   before_filter :login_required, :only => [:edit, :update, :create, :new]
   before_filter :get_slideshow, :only => [:play, :update, :present, :edit]
+  before_filter :get_user, :only => [:index]
   after_filter  :update_views, :only => :play
   
   layout 'two_columns'
   
   in_place_edit_for :slideshow, :title
   in_place_edit_for :slideshow, :status
-
-  
-  
   
   def play
     render :layout => 'slideshow'
   end
 
-  
+
   def index
+    @slideshows = @user.slideshows.published.paginate(:page => params[:page])
+    render :layout => 'big_little'
+  end
+  
+  def drafteds
+    @slideshows = current_user.slideshows.drafted.paginate(:page => params[:page])  
+    render :layout => 'big_little'  
+  end
+  
+  def explore
    #if params[:time] == 'today'
    #  conditions = {:created_at => (Time.now-1.day..Time.now)}
    #elsif %w[this-week this-month].include? params[:time]
@@ -71,13 +79,18 @@ class SlideshowsController < ApplicationController
     end
     redirect_to edit_slideshow_path @slideshow
   end
+  
   protected
   
     def update_views
       Slideshow.increment_counter(:views ,Slideshow.find(params[:id]).id)
     end
+    
     def get_slideshow
       @slideshow = Slideshow.find params[:id]
     end
 
+    def get_user
+      @user = User.find params[:user_id]
+    end
 end
