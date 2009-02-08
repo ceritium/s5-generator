@@ -48,8 +48,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  #map.connect ':controller/:action/:id'
-  #map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
   map.connect '/:order/:time', :controller => 'slideshows', :action => 'explore', :defaults => { :time => 'today' }, :requirements => { :order => /popular|most-commented/, :time => /today|this-week|this-month|all-time/ }
   #map.user '/:id', :controller => 'users', :action => 'show'
   #map.user_edit '/:id/edit', :controller => 'users', :action => 'edit'

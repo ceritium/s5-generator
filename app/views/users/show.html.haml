@@ -9,6 +9,8 @@
 
   
 %h3 Published SlideShows:
+- if @published_slideshows.blank?
+  %p No hay nada publicado.
 - @published_slideshows[0..7].in_groups_of(4, false) do |slideshows|
   .subcolumns
     = render :partial => 'slideshows/slideshow', :collection => slideshows
@@ -16,6 +18,8 @@
 
 
 - if current_user == @user
+  - if @drafted_slideshows.blank?
+    %p No tienes nigún slideshow como borrador.
   %h3 Drafted SlideShows:
   - @drafted_slideshows[0..7].in_groups_of(4, false) do |slideshows|
     .subcolumns
