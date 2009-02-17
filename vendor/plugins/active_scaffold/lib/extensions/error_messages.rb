@@ -14,7 +14,7 @@ module ActiveRecord
             full_messages << as_(msg)
           else
             label = as_(config.columns[attr].label) if config and config.columns[attr]
-            label ||= @base.class.human_attribute_name(attr)
+            label ||= @base.class.name
             full_messages << label + " " + as_(msg)
           end
         end

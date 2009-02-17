@@ -6,11 +6,9 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil 
   map.explore '/explore', :controller => 'main', :action => 'explore'
   map.home  '/home', :controller => 'main'
-
+  map.profile '/profile', :controller => 'users', :action => 'edit'
   
   #map.resources :most_commented, :controller => 'categories', :order => :comments_count, :collection => {:today => :get, :this_week => :get, :this_month => :get, :all_time => :get}
-  
-  
   map.resources :users do |user|
     user.resources :slideshows
   end
@@ -18,7 +16,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :comments
   map.resources :categories
-  
   
   map.resources :slideshows, :collection => {:drafteds => :get}, :member => {:play => :get} do |slideshow|
     slideshow.resources :slides, :collection => {:order => :put}
@@ -52,5 +49,4 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
   map.connect '/:order/:time', :controller => 'slideshows', :action => 'explore', :defaults => { :time => 'today' }, :requirements => { :order => /popular|most-commented/, :time => /today|this-week|this-month|all-time/ }
   #map.user '/:id', :controller => 'users', :action => 'show'
-  #map.user_edit '/:id/edit', :controller => 'users', :action => 'edit'
 end

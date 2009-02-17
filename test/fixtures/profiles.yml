@@ -2,8 +2,6 @@
 
 one:
   user_id: 1
-  web: MyString
 
 two:
   user_id: 1
-  web: MyString

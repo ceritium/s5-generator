@@ -5,8 +5,7 @@
 %h3 Edita tus datos:
 
 
-- form_for @user, user_path(@user), :method => :put do |f|
-    %p
-      = f.label :avatar
-      %br
-      = f.text_field :title
+- semantic_form_for @user, user_path(@user), :html => { :multipart => true }, :method => :put do |form|
+  - form.inputs :name => "Avatar" do
+    = form.input :avatar, :as => :file, :required => false, :legend => 'File' 
+    = form.commit_button

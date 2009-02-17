@@ -25,13 +25,15 @@ class User < ActiveRecord::Base
   
   has_many :slideshows
   has_many :comments
-
+  
+  
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :avatar
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "110x90>" }, :default_url => "/images/no_avatar_user.png"
   
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
