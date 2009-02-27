@@ -2,7 +2,7 @@
   = "#{@user.login} space"
 
 = content_for :sidebar do
-  = avatar(@user.email,'100')
+  = avatar(@user,:thumb)
   %p
     %b= "#{@user.login} space"
     %br

@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   filter_parameter_logging :password, :password_confirmation
 
+
+
+  
+
   protected  
     def add_breadcrumb name, url = '' 
       @breadcrumbs ||= []  

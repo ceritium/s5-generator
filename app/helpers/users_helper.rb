@@ -2,11 +2,14 @@ require 'digest/sha1'
 
 module UsersHelper
   
-  
-  
-  def avatar(email, size='60')
-    image_tag 'http://www.gravatar.com/avatar/' + Digest::MD5.new.hexdigest(email) + '?d=wavatar&s=' + size + '&r=p'
-    
+  def avatar(user, size = :thumb)
+    if user.avatar?
+     image_tag user.avatar.url(size)
+    elsif RAILS_ENV == 'offline' 
+      image_tag('avatar.' + size.to_s + '.png')
+    else
+     image_tag 'http://www.gravatar.com/avatar/' + Digest::MD5.new.hexdigest(user.email) + '?d=wavatar&s=' + array_select(AVATARS, size).to_s + '&r=p'
+    end
     #http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon
     #http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=monsterid
     #http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=wavatar

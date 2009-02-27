@@ -24,4 +24,13 @@ module ApplicationHelper
       html += "</li>"
   end
   
+  def array_select(array, target)
+    result = array.select{ |x| x.first == target}.flatten
+    if result
+      result.last
+    else
+      array.last.flatten
+    end
+  end
+  
 end

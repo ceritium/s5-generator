@@ -17,5 +17,5 @@
         .c25l
           %strong= link_to slideshow.category.name, category_path(slideshow.category)
           %br
-          = link_to screenshot(slideshow.title, '100'), category_path(slideshow.category)
+          = link_to webshot(slideshow, :thumb), category_path(slideshow.category)
           

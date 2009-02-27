@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.profile '/profile', :controller => 'users', :action => 'edit'
   
   #map.resources :most_commented, :controller => 'categories', :order => :comments_count, :collection => {:today => :get, :this_week => :get, :this_month => :get, :all_time => :get}
-  map.resources :users do |user|
+  map.resources :users, :member => {:change_password_update => :put} do |user|
     user.resources :slideshows
   end
   

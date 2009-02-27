@@ -7,5 +7,15 @@
 
 - semantic_form_for @user, user_path(@user), :html => { :multipart => true }, :method => :put do |form|
   - form.inputs :name => "Avatar" do
-    = form.input :avatar, :as => :file, :required => false, :legend => 'File' 
+    = form.input :avatar, :as => :file, :required => false, :label => 'File' 
+    = image_tag @user.avatar.url(:minithumb)
     = form.commit_button
+
+- semantic_form_for @user, change_password_update_user_path(@user), :method => :put do |form|    
+  - form.inputs :name => "Change Password" do
+    %li
+      = label_tag :old_password, 'Old Password'
+      = password_field_tag :old_password, 'old_password', {:size => 50}
+    = form.input :password, :as => :password, :required => false
+    = form.input :password_confirmation, :as => :password, :required => false
+    = form.buttons :commit
