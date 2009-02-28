@@ -42,16 +42,16 @@ class UsersController < ApplicationController
                   flash[:notice] = "Password successfully updated"
                   redirect_to profile_path
               else
-                  flash[:alert] = "Password not changed"
+                  flash[:error] = "Password not changed"
                   render :action => 'edit'
               end
                
           else
-              flash[:alert] = "New Password mismatch" 
+              flash[:error] = "New Password mismatch" 
               render :action => 'edit'
           end
       else
-          flash[:alert] = "Old password incorrect" 
+          flash[:error] = "Old password incorrect" 
           render :action => 'edit'
       end
   end
