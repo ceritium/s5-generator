@@ -13,6 +13,13 @@ class UserMailer < ActionMailer::Base
     @body[:url]  = APP_CONFIG[:site_url]
   end
   
+  
+  def reset_notification(user)
+    setup_email(user)
+    @subject    += 'Link to reset your password'
+    @body[:url]  = "#{APP_CONFIG[:site_url]}/reset/#{user.reset_code}"
+  end
+  
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"

@@ -8,6 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.home  '/home', :controller => 'main'
   map.profile '/profile', :controller => 'users', :action => 'edit'
   map.publish '/publish', :controller => 'slideshows', :action => 'new'
+  map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
+  map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
   
   #map.resources :most_commented, :controller => 'categories', :order => :comments_count, :collection => {:today => :get, :this_week => :get, :this_month => :get, :all_time => :get}
   map.resources :users, :member => {:change_password_update => :put} do |user|
