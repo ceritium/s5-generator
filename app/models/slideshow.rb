@@ -1,3 +1,4 @@
+require 'webthumb'
 require 'maruku'
 require 'tzinfo'
 require 'rwebthumb'
@@ -16,6 +17,8 @@ class Slideshow < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   before_save :code_to_html
+  #after_save :get_thumb
+  
   sluggable_finder :title
 
   aasm_column :status
@@ -42,7 +45,19 @@ class Slideshow < ActiveRecord::Base
   
   def thumb
     et = Easythumb.new('ba67188b0bb8756435e81118252832e8','4132')
-    et.build_url(:url => "#{APP_CONFIG[:site_url]}/slideshows/#{slug}", :size => :medium, :cache => 1)
+    et.build_url(:url => "#{APP_CONFIG[:site_url]}/slideshows/#{slug}/play", :size => :medium, :cache => 1)
+  end
+  
+  def get_thumb
+    puts url = "#{APP_CONFIG[:site_url]}/slideshows/#{slug}/play"
+    t = Nailer.new(url)
+    if t.ok?
+      t.wait_until_ready
+      t.retrieve_to_file('out4.jpg', :large)
+      puts "Thumbnails saved"
+    else
+      puts "Error"
+    end
   end
 
   def code_to_html

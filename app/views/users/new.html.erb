@@ -15,5 +15,6 @@
 <p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
 <%= f.password_field :password_confirmation %></p>
 
+<%= recaptcha_tags :display => {:lang => 'es'} %>
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

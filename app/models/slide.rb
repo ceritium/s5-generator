@@ -28,5 +28,6 @@ class Slide < ActiveRecord::Base
     self.handout_html = Maruku.new(self.handout_code).to_html
   end
   
+
   
 end

@@ -9,7 +9,7 @@ module SlideshowsHelper
     if RAILS_ENV=='offline'
       image_tag('webshot.' + size.to_s + '.png')
     else
-      image_tag 'http://www.gravatar.com/avatar/' + Digest::MD5.new.hexdigest(slideshow.title) + '?d=identicon&s=' + array_select(WEBSHOTS, size).to_s + '&r=p'
+        image_tag 'http://www.gravatar.com/avatar/' + Digest::MD5.new.hexdigest(slideshow.title) + '?d=identicon&s=' + array_select(WEBSHOTS, size).to_s + '&r=p'
     end
     #http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon
     #http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=monsterid

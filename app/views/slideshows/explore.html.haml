@@ -18,5 +18,5 @@
 
 - @slideshows.in_groups_of(4, false) do |slideshows|
   .subcolumns
-    = render :partial => 'slideshow', :collection => @slideshows
+    = render :partial => 'slideshow', :collection => slideshows
 #paginate= will_paginate @slideshows

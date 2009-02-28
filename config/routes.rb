@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.explore '/explore', :controller => 'main', :action => 'explore'
   map.home  '/home', :controller => 'main'
   map.profile '/profile', :controller => 'users', :action => 'edit'
+  map.publish '/publish', :controller => 'slideshows', :action => 'new'
   
   #map.resources :most_commented, :controller => 'categories', :order => :comments_count, :collection => {:today => :get, :this_week => :get, :this_month => :get, :all_time => :get}
   map.resources :users, :member => {:change_password_update => :put} do |user|
@@ -34,10 +35,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
+
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => 'main', :action => 'welcome'
