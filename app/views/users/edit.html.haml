@@ -5,17 +5,29 @@
 %h3 Edita tus datos:
 
 
-- semantic_form_for @user, user_path(@user), :html => { :multipart => true }, :method => :put do |form|
-  - form.inputs :name => "Avatar" do
-    = form.input :avatar, :as => :file, :required => false, :label => 'File' 
-    = image_tag @user.avatar.url(:minithumb)
-    = form.commit_button
+- form_for @user, user_path(@user), :html => { :multipart => true }, :method => :put do |f|
+  - field_set_tag 'Avatar' do
+    %p
+      = image_tag @user.avatar.url(:minithumb)
+    %p
+      = f.label :avatar
+      = f.file_field :avatar
+    %p
+    = f.submit
 
-- semantic_form_for @user, change_password_update_user_path(@user), :method => :put do |form|    
-  - form.inputs :name => "Change Password" do
-    %li
-      = label_tag :old_password, 'Old Password'
-      = password_field_tag :old_password, 'old_password', {:size => 50}
-    = form.input :password, :as => :password, :required => false
-    = form.input :password_confirmation, :as => :password, :required => false
-    = form.buttons :commit
+- form_tag change_password_update_user_path(@user), :method => :put do |f|
+  - field_set_tag 'Change Password' do
+    %p
+      = label_tag 'Old Password'
+      %br
+      = password_field_tag 'old_password', @old_password, :size => 45, :class => 'text'
+    %p
+      = label_tag 'New Password'
+      %br
+      = password_field_tag 'password', {}, :size => 45, :class => 'text'
+    %p
+      = label_tag 'Confirm new password'
+      %br
+      = password_field_tag 'password_confirmation', {}, :size => 45, :class => 'text'
+    %p
+      = submit_tag 'Change password'

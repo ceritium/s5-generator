@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :show]
+  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :show, :change_password_update]
   
   def show
     @published_slideshows = @user.slideshows.published.find(:all, :limit => 9)
@@ -33,26 +33,26 @@ class UsersController < ApplicationController
   
   
   def change_password_update
-      if User.authenticate(current_user.login, params[:old_password])
+      if User.authenticate(@user.login, params[:old_password])
           if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
-              current_user.password_confirmation = params[:password_confirmation]
-              current_user.password = params[:password]
+              @user.password_confirmation = params[:password_confirmation]
+              @user.password = params[:password]
               
               if current_user.save!
                   flash[:notice] = "Password successfully updated"
-                  redirect_to change_password_path
+                  redirect_to profile_path
               else
                   flash[:alert] = "Password not changed"
-                  render :action => 'change_password'
+                  render :action => 'edit'
               end
                
           else
               flash[:alert] = "New Password mismatch" 
-              render :action => 'change_password'
+              render :action => 'edit'
           end
       else
           flash[:alert] = "Old password incorrect" 
-          render :action => 'change_password'
+          render :action => 'edit'
       end
   end
  
